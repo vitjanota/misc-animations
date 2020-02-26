@@ -1,0 +1,29 @@
+/* ==================== Card ==================== */
+
+.Card {
+  height: 150px;
+  width: 100px;
+  margin: 10px;
+  background-color: #009900;
+  border: 10px solid #dddddd;
+  border-radius: 20px; 
+}
+
+.Card.Avers {
+  background-color: #ffffff;
+}
+
+.CardAvers {
+  display: none;
+  height: 100%;
+  width:100%;
+  color: #000000;
+  text-align: center;
+}
+
+.CardRevers {
+  height: 100%;
+  width:100%;
+  color: #ffffff;
+  text-align: center;
+}

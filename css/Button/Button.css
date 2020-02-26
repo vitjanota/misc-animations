@@ -1,0 +1,33 @@
+/* ==================== Button ==================== */
+
+.Button {
+  cursor: pointer;
+  width: 90px;
+  height: 40px;
+  margin: 10px;
+  text-align: center;
+  background-color: #dddddd;
+  box-shadow: 2px 3px 4px rgba(0,0,0,.3);
+  border-radius: 10px; 
+}
+
+#ButtonHTMLText {
+  padding-top: 10px;
+  height: 30px;
+}
+
+#ButtonImage {
+  background: url(../../img/Button/Button.svg) no-repeat center center;
+  background-size: 90px 40px; 
+}
+
+#ButtonCSSText:before {
+  position: relative;
+  top: 25%;
+  content: "CSS Text";
+}
+
+.Button:active {
+  box-shadow: 1px 1px 4px rgba(0,0,0,.3);
+  transform: translateY(3px);
+}

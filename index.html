@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html lang="cs">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Misc Animations</title>
+		<link href="css/page.css" rel="STYLESHEET" type="text/css" media="screen">
+		<link href="css/Button/Button.css" rel="STYLESHEET" type="text/css" media="screen">
+		<link href="css/Card/Card.css" rel="STYLESHEET" type="text/css" media="screen">
+		<link href="css/Clock/Clock.css" rel="STYLESHEET" type="text/css" media="screen">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="js/page.js"></script>
+		<script src="js/Button/Button.js"></script>
+		<script src="js/Card/Card.js"></script>
+		<script src="js/Clock/Clock.js"></script>
+	</head>
+
+	<body>
+		<!-- Button -->
+		<section class="Group">
+			<h2 class="GroupTitle">Button</h2>
+			<div class="GroupContent">
+				<div class="GroupContentItem">
+					<div class="Button" id="ButtonHTMLText">HTML Text</div>
+					<div class="GroupContentItemDescription">Label Set in HTML</div>
+				</div>
+				<div class="GroupContentItem">
+					<div class="Button" id="ButtonCSSText"></div>
+					<div class="GroupContentItemDescription">Label Set in CSS</div>
+				</div>
+				<div class="GroupContentItem">
+					<div class="Button" id="ButtonImage"></div>
+					<div class="GroupContentItemDescription">Image Set in CSS</div>
+				</div>
+			</div>
+		</section>
+		<!-- Card -->
+		<section class="Group">
+			<h2 class="GroupTitle">Card</h2>
+			<div class="GroupContent">
+				<div class="GroupContentItem">
+					<div class="Card">
+						<div class="CardAvers">Front</div>
+						<div class="CardRevers">Back</div>
+					</div>
+					<div class="GroupContentItemDescription">
+						<div><a href="#" id="RotateYLink">Rotate Vertically</a></div>
+						<div><a href="#" id="RotateXLink">Rotate Horizontally</a></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Clock -->
+		<section class="Group">
+			<h2 class="GroupTitle">Clock</h2>
+			<div class="GroupContent">
+				<div class="GroupContentItem">
+					<div class="Clock" id="PureClock">
+						<div class="SecondHandArea">
+							<div class="SecondHand"></div>
+						</div>
+						<div class="MinuteHandArea">
+							<div class="MinuteHand"></div>
+						</div>
+						<div class="HourHandArea">
+							<div class="HourHand"></div>
+						</div>
+					</div>
+					<div class="GroupContentItemDescription">No Images</div>
+				</div>
+				<div class="GroupContentItem">
+					<div class="Clock" id="DialImageClock">
+						<div class="SecondHandArea">
+							<div class="SecondHand"></div>
+						</div>
+						<div class="MinuteHandArea">
+							<div class="MinuteHand"></div>
+						</div>
+						<div class="HourHandArea">
+							<div class="HourHand"></div>
+						</div>
+					</div>
+					<div class="GroupContentItemDescription">Dial Image</div>
+				</div>
+				<div class="GroupContentItem">
+					<div class="Clock" id="HandImageClock">
+						<div class="SecondHandArea">
+							<div class="SecondHand"></div>
+						</div>
+						<div class="MinuteHandArea">
+							<div class="MinuteHand"></div>
+						</div>
+						<div class="HourHandArea">
+							<div class="HourHand"></div>
+						</div>
+					</div>
+					<div class="GroupContentItemDescription">Hands Images</div>
+				</div>
+			</div>
+		</section>
+		<!-- Clock -->
+		<section class="Group">
+			<h2 class="GroupTitle">Resizable Clock</h2>
+			<div class="GroupContent">
+				<div class="GroupContentItem">
+					<div class="Clock" id="ResizableClock">
+						<div class="SecondHandArea">
+							<div class="SecondHand"></div>
+						</div>
+						<div class="MinuteHandArea">
+							<div class="MinuteHand"></div>
+						</div>
+						<div class="HourHandArea">
+							<div class="HourHand"></div>
+						</div>
+					</div>
+					<div class="GroupContentItemDescription">
+						<form name="ClockSizer">
+							Diameter: <input type="text" name="ClockSize" value="120"/> px
+							<a href="#" id="ResizeClock">Resize</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

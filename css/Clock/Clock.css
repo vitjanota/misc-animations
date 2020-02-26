@@ -1,0 +1,72 @@
+/* ==================== Clock ==================== */
+
+.Clock {
+  margin: 10px;
+  background-color: #eeeeee;
+  border-color: #000000;
+  border-style: solid;
+  border-radius: 50%; 
+}
+
+.SecondHandArea, .MinuteHandArea, .HourHandArea {
+  position: relative;
+}
+
+.SecondHand {
+  background-color: #ff0000;
+}
+
+.MinuteHand {
+  background-color: #000000;
+}
+
+.HourHand {
+  background-color: #000000;
+}
+
+#PureClock, #HandImageClock, #DialImageClock {
+  width: 120px;
+  height: 120px;
+  border-width: 8px;
+}
+
+#DialImageClock {
+  background: url(../../img/Clock/dial.svg) no-repeat center center;
+  background-size: 110px 110px;   
+}
+
+#PureClock .SecondHand, #DialImageClock .SecondHand, #HandImageClock .SecondHand {
+  width: 2px;
+  height: 55px;
+  border-radius: 1px;
+}
+
+#PureClock .MinuteHand, #HandImageClock .MinuteHand, #DialImageClock .MinuteHand {
+  width: 6px; 
+  height: 55px;
+  border-radius: 3px;
+}
+
+#PureClock .HourHand, #HandImageClock .HourHand, #DialImageClock .HourHand {
+  width: 6px;
+  height: 36px;
+  border-radius: 3px;
+}
+
+#HandImageClock .SecondHand {
+  width: 6px;
+  background: url(../../img/Clock/SecondHand.svg) no-repeat center center;
+  background-size: 6px 55px;
+}
+
+#HandImageClock .MinuteHand {
+  width: 12px;
+  background: url(../../img/Clock/MinuteHand.svg) no-repeat center center;
+  background-size: 12px 55px;
+}
+
+#HandImageClock .HourHand {
+  width: 12px;
+  background: url(../../img/Clock/HourHand.svg) no-repeat center center;
+  background-size: 12px 36px;
+}

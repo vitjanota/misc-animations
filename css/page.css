@@ -1,0 +1,62 @@
+/* ==================== page definitions ==================== */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+html {
+  font-family: Open Sans, Arial CE, Helvetica CE, Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: #eeeeee;
+}
+
+a {
+  color: #666666;
+}
+
+a:hover {
+  color: #aaaaaa;
+}
+
+input {
+  outline: none;
+  font-size: 15px;
+  border: none;
+  background-color: #eeeeee;
+  padding: 0 5px 0 5px;
+  width: 35px;
+  text-align: center;
+}
+
+.Group {
+  display: flex;
+  margin: 20px 20px 0 20px;
+  border-left: 10px solid #eeeeee;
+}
+
+.Group .GroupTitle {
+  width: 150px;
+  margin: 0 20px 0 0;
+  background-color: #ffffff;
+  padding: 10px 20px 10px 20px;
+}
+
+.Group .GroupContent {
+  display: flex;
+  width: 600px;
+  background-color: #ffffff;
+  padding: 10px 20px 10px 20px;
+}
+
+.Group .GroupContentItem {
+  margin: 0 15px 0 15px;
+}
+
+.Group .GroupContentItemDescription {
+  width: 100%;
+  text-align: center;
+}
