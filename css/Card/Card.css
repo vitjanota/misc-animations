@@ -7,10 +7,13 @@
   background-color: #009900;
   border: 10px solid #dddddd;
   border-radius: 20px; 
+  background-image: url(../../img/Card/CardBgr.svg);
+  background-size: 30px 30px;
 }
 
 .Card.Avers {
   background-color: #ffffff;
+  background-image: none;
 }
 
 .CardAvers {
