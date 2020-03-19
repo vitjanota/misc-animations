@@ -3,9 +3,9 @@ Inits.push(initResClock);
 
 // Clock functionality initialization
 function initClock() {
-	var myClock = new animClock($("#PureClock")),
-		myClockDial = new animClock($("#DialImageClock")),
-		myClockHands = new animClock($("#HandImageClock")),
+	var myClock = new AnimClock($("#PureClock")),
+		myClockDial = new AnimClock($("#DialImageClock")),
+		myClockHands = new AnimClock($("#HandImageClock")),
 		currentTime = new Date();
 	
 	myClock.positionHands();
@@ -22,7 +22,7 @@ function initResClock() {
 		myResClock.setClockSize(document.forms["ClockSizer"].ClockSize.value);
     });
 
-    var myResClock = new animClock($("#ResizableClock")),
+    var myResClock = new AnimClock($("#ResizableClock")),
 		currentTime = new Date();
 
 	myResClock.setClockSize(120);
@@ -31,7 +31,7 @@ function initResClock() {
 }
 
 // Clock object definition
-function animClock(dial) {
+function AnimClock(dial) {
     // clock components references
     this.dial = dial;
 	this.secondHandArea = $(dial.children()[0]);

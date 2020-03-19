@@ -2,7 +2,7 @@ Inits.push(initCard);
 
 // Card functionality initialization
 function initCard() {
-    var myCard = new animCard($(".Card"));
+    var myCard = new AnimCard($(".Card"));
 
     $("#RotateYLink").click(function(event) {
         event.preventDefault();
@@ -16,7 +16,7 @@ function initCard() {
 }
 
 // Card object definition
-function animCard(crd) {
+function AnimCard(crd) {
     // card objects references
     this.card = crd;
     this.avers = $(crd.children()[0]);
