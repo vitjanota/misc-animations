@@ -1,0 +1,26 @@
+/* ==================== Slider ==================== */
+
+.SliderWrapper {
+  overflow: hidden;
+  position: relative;
+  background-color: #dddddd;
+}
+
+.Slider {
+  background: url(../../img/Slider/SliderBgr.svg) no-repeat center right; 
+  width: 120px;
+  position: absolute;
+  left: -120px;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.SliderCnt {
+  margin: 0 0 0 10px;
+}
+
+.SliderArea {
+  margin: 10px;
+}
