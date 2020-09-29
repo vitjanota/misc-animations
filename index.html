@@ -8,12 +8,14 @@
 		<link href="css/Card/Card.css" rel="STYLESHEET" type="text/css" media="screen">
 		<link href="css/Clock/Clock.css" rel="STYLESHEET" type="text/css" media="screen">
 		<link href="css/Slider/Slider.css" rel="STYLESHEET" type="text/css" media="screen">
+		<link href="css/Dropdown/Dropdown.css" rel="STYLESHEET" type="text/css" media="screen">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="js/page.js"></script>
 		<script src="js/Button/Button.js"></script>
 		<script src="js/Card/Card.js"></script>
 		<script src="js/Clock/Clock.js"></script>
 		<script src="js/Slider/Slider.js"></script>
+		<script src="js/Dropdown/Dropdown.js"></script>
 	</head>
 
 	<body>
@@ -123,6 +125,40 @@
 						</form>
 					</div>
 				</div>
+			</div>
+		</section>
+		<section class="Group">
+			<h2 class="GroupTitle">Dropdown with Images</h2>
+			<div class="GroupContent">
+				<div class="GroupContentItem">
+					<form name='myformimg'>
+						<input type='hidden' name='dropdown' value='Value 01'/>
+						<div id='DropdownFieldImg' class="DropdownField">
+							<div><img src='img/Dropdown/Value01.svg' height='25' alt='Value 01'/ id='DropdownFieldImgValue'></div>
+						</div>
+						<div id='DropdownImg' class="Dropdown">
+							<div><img src='img/Dropdown/Value01.svg' height='25' alt='Value 01' data-value='Value 01'/></div>
+							<div><img src='img/Dropdown/Value02.svg' height='25' alt='Value 02' data-value='Value 02'/></div>
+							<div><img src='img/Dropdown/value03.svg' height='25' alt='Value 03' data-value='Value 03'/></div>
+						</div>
+					</form>
+					<div class="GroupContentItemDescriptionLeft">Images only Dropdown</div>
+				</div>
+				<div class="GroupContentItem">
+					<form name='myformtxt'>
+						<input type='hidden' name='dropdown' value='Value 01'/>
+						<div id='DropdownFieldText' class="DropdownField">
+							<div><img src='img/Dropdown/Value01.svg' height='25' alt='Value 01'/ id='DropdownFieldTextImg'><span id='DropdownFieldTextValue'>Value 01</div>
+						</div>
+						<div id='DropdownText' class="Dropdown">
+							<div data-value='Value 01'><img src='img/Dropdown/Value01.svg' height='25' alt='Value 01'/><span>Value 01</span></div>
+							<div data-value='Value 02'><img src='img/Dropdown/Value02.svg' height='25' alt='Value 02'/><span>Value 02</span></div>
+							<div data-value='Value 03'><img src='img/Dropdown/value03.svg' height='25' alt='Value 03'/><span>Value 03</span></div>
+						</div>
+					</form>
+					<div class="GroupContentItemDescriptionLeft">Images and Text Dropdown</div>
+				</div>
+				<div class="GroupContentItemDescription">(selected value is set into hidden input of corresponding form)</div>	
 			</div>
 		</section>
 		<section class="Group">

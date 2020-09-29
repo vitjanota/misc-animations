@@ -1,0 +1,59 @@
+/* ==================== Dropdown ==================== */
+
+.DropdownField {
+  padding: 4px 8px 4px 8px;
+  border: 1px solid #333333;
+  cursor: pointer;
+  background: #f8f8f8 url(../../img/Dropdown/DropdownArrow.svg) no-repeat center right;
+  background-size: 14px; 
+}
+
+#DropdownFieldImg {
+  width: 50px;
+}
+
+#DropdownFieldText {
+  width: 110px;
+}
+
+#DropdownFieldText span {
+  margin-left: 4px;
+  vertical-align: top;
+}
+
+.DropdownField:hover {
+  background-color: #ffffff;
+}
+
+.Dropdown {
+  border: 1px solid #333333;
+  border-top: none;
+  background-color: #ffffff;
+  padding: 5px 0 5px 0;
+  border-radius: 0 0 6px 6px;
+  text-align: center;  
+  position: absolute;
+  display: none;
+  z-index: 100;
+}
+
+#DropdownImg {
+  width: 40px;
+}
+
+#DropdownText {
+  width: 110px;
+}
+
+#DropdownText span {
+  margin-left: 4px;
+  vertical-align: top;
+}
+
+.Dropdown div {
+  cursor: pointer;
+}
+
+.Dropdown div:hover {
+  background-color: #e6e6e6;
+}
