@@ -19,6 +19,7 @@ function initClock() {
 
 function initResClock() {
     $("#ResizeClock").click(function(event) {
+        event.preventDefault();
 		myResClock.setClockSize(document.forms["ClockSizer"].ClockSize.value);
     });
 
