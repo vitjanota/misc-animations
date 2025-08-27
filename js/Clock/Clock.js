@@ -44,32 +44,41 @@ function AnimClock(dial) {
 
 	this.setClockSize = function(diameter) {
 		//calcuate hands size (arbitrary numbers derived from dial diameter just to look nice)
-		let secondHandSize = [Math.round(diameter * 0.46),Math.round(diameter * 0.02)], // 2% x 46% of dial size
-			minuteHandSize = [Math.round(diameter * 0.46),Math.round(diameter * 0.05)], // 5% x 46% of dial size
-			hourHandSize = [Math.round(diameter * 0.31),Math.round(diameter * 0.05)]; // 5% x 31% of dial size
+		let secondHandSize = { // 2% x 46% of dial size
+                height: Math.round(diameter * 0.46),
+                width: Math.round(diameter * 0.02)
+            },
+			minuteHandSize = { // 5% x 46% of dial size
+                height: Math.round(diameter * 0.46),
+                width: Math.round(diameter * 0.05)
+            }, 
+			hourHandSize = { // 5% x 31% of dial size
+                height: Math.round(diameter * 0.31),
+                width: Math.round(diameter * 0.05)
+            };
 
 		// in order to place hands properly, both dial diemater and hands widths need to be even numbers
 		diameter = diameter % 2 === 0 ? diameter : diameter - 1;
-		secondHandSize[1] = secondHandSize[1] % 2 === 0 ? secondHandSize[1] : secondHandSize[1] - 1;
-		minuteHandSize[1] = minuteHandSize[1] % 2 === 0 ? minuteHandSize[1] : minuteHandSize[1] - 1;
-		hourHandSize[1] = hourHandSize[1] % 2 === 0 ? hourHandSize[1] : hourHandSize[1] - 1;
+		secondHandSize.width = secondHandSize.width % 2 === 0 ? secondHandSize.width : secondHandSize.width - 1;
+		minuteHandSize.width = minuteHandSize.width % 2 === 0 ? minuteHandSize.width : minuteHandSize.width - 1;
+		hourHandSize.width = hourHandSize.width % 2 === 0 ? hourHandSize.width : hourHandSize.width - 1;
 
 		//set hands size ans shape
 		this.dial.style.height= diameter + 'px';
 		this.dial.style.width = diameter + 'px';
 		this.dial.style.borderWidth = Math.round(diameter * 0.06) + 'px';
 
-		this.secondHand.style.width = secondHandSize[1] + 'px',
-		this.secondHand.style.height = secondHandSize[0] + 'px';
-		this.secondHand.style.borderRadius = Math.round(secondHandSize[1] / 2) + 'px';
+		this.secondHand.style.width = secondHandSize.width + 'px',
+		this.secondHand.style.height = secondHandSize.height + 'px';
+		this.secondHand.style.borderRadius = Math.round(secondHandSize.width / 2) + 'px';
 
-		this.minuteHand.style.width =  minuteHandSize[1] + 'px';
-		this.minuteHand.style.height = minuteHandSize[0] + 'px';
-		this.minuteHand.style.borderRadius = Math.round(minuteHandSize[1] / 2) + 'px';
+		this.minuteHand.style.width =  minuteHandSize.width + 'px';
+		this.minuteHand.style.height = minuteHandSize.height + 'px';
+		this.minuteHand.style.borderRadius = Math.round(minuteHandSize.width / 2) + 'px';
 
-		this.hourHand.style.width = hourHandSize[1] + 'px';
-		this.hourHand.style.height =  hourHandSize[0] + 'px';
-		this.hourHand.style.borderRadius = Math.round(hourHandSize[1] / 2) + 'px';
+		this.hourHand.style.width = hourHandSize.width + 'px';
+		this.hourHand.style.height =  hourHandSize.height + 'px';
+		this.hourHand.style.borderRadius = Math.round(hourHandSize.width / 2) + 'px';
 		//position hands
 		this.positionHands();
 	};
