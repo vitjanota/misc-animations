@@ -1,8 +1,7 @@
 /* ==================== Card ==================== */
-
-.Card {
+#Card {
   height: 150px;
-  width: 100px;
+  width: 120px;
   margin: 10px;
   background-color: #009900;
   border: 10px solid #dddddd;
@@ -11,12 +10,12 @@
   background-size: 30px 30px;
 }
 
-.Card.Avers {
+#Card.Avers {
   background-color: #ffffff;
   background-image: none;
 }
 
-.CardAvers {
+#CardAvers {
   display: none;
   height: 100%;
   width:100%;
@@ -24,7 +23,7 @@
   text-align: center;
 }
 
-.CardRevers {
+#CardRevers {
   height: 100%;
   width:100%;
   color: #ffffff;

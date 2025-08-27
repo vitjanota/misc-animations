@@ -2,8 +2,10 @@ Inits.push(initButton);
 
 // Button functionality initialization
 function initButton() {
-    $(".Button").click(function(event) {
-        setTimeout(buttonClickAction,200);
+    [...document.getElementsByClassName("Button")].forEach((Button) => {
+        Button.onclick = (event) => {
+            setTimeout(buttonClickAction,200);
+        };
     });
 }
 

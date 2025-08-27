@@ -1,7 +1,7 @@
 var Inits = [];
 
 //run all available init functions
-$(document).ready(function(){
+document.addEventListener("DOMContentLoaded", () => {
     Inits.forEach(function(Init){
         Init();
     });
