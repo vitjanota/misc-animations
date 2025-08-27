@@ -2,7 +2,7 @@ Inits.push(initSlider);
 
 // Slider initialization
 function initSlider() {
-    var mySlider = document.getElementById("slider01");
+    let mySlider = document.getElementById("slider01");
 
     document.getElementById("sliderwrapper01").onmouseenter = function(event) {
         mySlider.style.height = this.clientHeight + "px";

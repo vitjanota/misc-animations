@@ -2,7 +2,7 @@ Inits.push(initCard);
 
 // Card functionality initialization
 function initCard() {
-    var myCard = new AnimCard(document.getElementById("Card"));
+    let myCard = new AnimCard(document.getElementById("Card"));
 
     document.getElementById("RotateYLink").onclick = (event) => {
         event.preventDefault();
@@ -32,7 +32,7 @@ function AnimCard(crd) {
     this.speed = 10;
 
     this.initRotation = function(axis) {
-        var initRot = "rotate" + this.axis + "(0deg)";
+        const initRot = "rotate" + this.axis + "(0deg)";
         // set rotation axis if valid; use default otherwise
         if (this.axes.indexOf(axis) !== -1) this.axis = axis;
         // reset Card to initial state
@@ -44,7 +44,7 @@ function AnimCard(crd) {
     };
 
     this.rotate = function(angle) {
-        var that = this,
+        let that = this,
             flipRot = {};
         // rotate by one step
         this.card.style.transform = "rotate" + this.axis + "(" + (angle + this.step) + "deg)";
