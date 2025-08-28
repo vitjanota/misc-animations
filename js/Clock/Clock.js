@@ -1,6 +1,8 @@
 Inits.push(initClock);
 Inits.push(initResClock);
 
+let originalSize = 120;
+
 // Clock functionality initialization
 function initClock() {
 	let myClock = new AnimClock(document.getElementById('PureClock')),
@@ -17,16 +19,31 @@ function initClock() {
     myClockHands.moveHands(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
 }
 
-function initResClock() {
-    document.getElementById('ResizeClock').onclick = function(event) {
+async function initResClock() {
+    // set resize functionality for dynamic size clock
+    document.getElementById('ResizeClock').onclick = async function(event) {
         event.preventDefault();
-		myResClock.setClockSize(document.forms['ClockSizer'].ClockSize.value);
+        const finalSize = document.forms['ClockSizer'].ClockSize.value;
+        if (isPositiveInteger(finalSize)) {
+            if (finalSize > originalSize) {
+                for (let index = originalSize; index <= finalSize; index++) {
+                    await waitABit();
+                    myResClock.setClockSize(index);
+                }
+            } else {
+                for (let index = originalSize; index >= finalSize; index--) {
+                    await waitABit();
+                    myResClock.setClockSize(index);
+                }
+            }
+            originalSize = finalSize;
+        }
     };
 
     let myResClock = new AnimClock(document.getElementById('ResizableClock'));
 	const currentTime = new Date();
 
-	myResClock.setClockSize(120);
+	myResClock.setClockSize(originalSize);
     myResClock.positionHands();
     myResClock.moveHands(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
 }
@@ -128,4 +145,21 @@ function AnimClock(dial) {
 			that.moveHands(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
 		},1000);
 	};
+}
+
+// insert slight delay in actions
+function waitABit() {
+    return new Promise(resolve => setTimeout(resolve, 10));
+}
+
+// test if value is positive integer
+function isPositiveInteger(val) {
+    let test = false;
+    if (val?.trim?.() && !isNaN(val)) {
+        const num = parseFloat(val);
+        if (!val.includes('.') && num > 0) {
+            test = true;
+        }
+    }
+    return test;
 }
