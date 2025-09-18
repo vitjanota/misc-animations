@@ -1,6 +1,4 @@
-Inits.push(initDropdown);
-
-function initDropdown() {
+let initDropdown = () => {
 	$("#DropdownFieldImg").click(function(){
 		$("#DropdownImg").slideToggle();
 	});
@@ -24,3 +22,5 @@ function initDropdown() {
 		document.forms['myformtxt'].elements['dropdown'].value = $(this).attr("data-value");
 	});
 }
+
+Inits.push(initDropdown);

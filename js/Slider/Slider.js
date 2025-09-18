@@ -1,7 +1,5 @@
-Inits.push(initSlider);
-
 // Slider initialization
-function initSlider() {
+let initSlider = () => {
     let mySlider = document.getElementById("slider01");
 
     document.getElementById("sliderwrapper01").onmouseenter = function(event) {
@@ -15,7 +13,7 @@ function initSlider() {
 }
 
 // Slder functionality
-function slideIt(slider,progress,end,step) {
+let slideIt = (slider,progress,end,step) => {
     slider.style.left = progress + "px";
     if (Math.abs(end - progress) >= Math.abs(step)) {
         progress += step;
@@ -24,3 +22,5 @@ function slideIt(slider,progress,end,step) {
         },4);
     }
 }
+
+Inits.push(initSlider);
