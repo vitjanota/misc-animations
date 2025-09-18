@@ -1,11 +1,8 @@
-
-
-let originalSize = 120;
-
 // Clock class
 class AnimClock {
-    constructor(dial) {
+    constructor(dial, diameter) {
         this.dial = dial;
+        this.diameter = diameter;
 	    this.secondHandArea = dial.children[0];
 	    this.minuteHandArea = dial.children[1];
 	    this.hourHandArea = dial.children[2];
@@ -16,35 +13,44 @@ class AnimClock {
 
     run() {
         const currentTime = new Date();
+        if (this.diameter) {
+            // if diameter is specified in constructor, set clock size aitomatically
+            this.setClockSize();
+        } else{
+            // use settings from css definitions otherwise (manual setup)
+            this.diameter = this.dial.style.height;
+        }
         this.positionHands();
         this.moveHands(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
     }
 
     setClockSize(diameter) {
+        if (diameter) this.diameter = diameter;
+
 		//calcuate hands size (arbitrary numbers derived from dial diameter just to look nice)
 		let secondHandSize = { // 2% x 46% of dial size
-                height: Math.round(diameter * 0.46),
-                width: Math.round(diameter * 0.02)
+                height: Math.round(this.diameter * 0.46),
+                width: Math.round(this.diameter * 0.02)
             },
 			minuteHandSize = { // 5% x 46% of dial size
-                height: Math.round(diameter * 0.46),
-                width: Math.round(diameter * 0.05)
+                height: Math.round(this.diameter * 0.46),
+                width: Math.round(this.diameter * 0.05)
             }, 
 			hourHandSize = { // 5% x 31% of dial size
-                height: Math.round(diameter * 0.31),
-                width: Math.round(diameter * 0.05)
+                height: Math.round(this.diameter * 0.31),
+                width: Math.round(this.diameter * 0.05)
             };
 
-		// in order to place hands properly, both dial diemater and hands widths need to be even numbers
-		diameter = diameter % 2 === 0 ? diameter : diameter - 1;
+            // in order to place hands properly, both dial diemater and hands widths need to be even numbers
+		this.diameter = this.diameter % 2 === 0 ? this.diameter : this.diameter - 1;
 		secondHandSize.width = secondHandSize.width % 2 === 0 ? secondHandSize.width : secondHandSize.width - 1;
 		minuteHandSize.width = minuteHandSize.width % 2 === 0 ? minuteHandSize.width : minuteHandSize.width - 1;
 		hourHandSize.width = hourHandSize.width % 2 === 0 ? hourHandSize.width : hourHandSize.width - 1;
 
 		//set hands size ans shape
-		this.dial.style.height= diameter + 'px';
-		this.dial.style.width = diameter + 'px';
-		this.dial.style.borderWidth = Math.round(diameter * 0.06) + 'px';
+		this.dial.style.height= this.diameter + 'px';
+		this.dial.style.width = this.diameter + 'px';
+		this.dial.style.borderWidth = Math.round(this.diameter * 0.06) + 'px';
 
 		this.secondHand.style.width = secondHandSize.width + 'px',
 		this.secondHand.style.height = secondHandSize.height + 'px';
@@ -130,7 +136,6 @@ let initClock = () => {
 	const myClock = new AnimClock(document.getElementById('PureClock'));
 	const myClockDial = new AnimClock(document.getElementById('DialImageClock'));
 	const myClockHands = new AnimClock(document.getElementById('HandImageClock'));
-
     myClock.run();
     myClockDial.run();
     myClockHands.run();
@@ -142,24 +147,22 @@ let  initResClock = async () => {
         event.preventDefault();
         const finalSize = document.forms['ClockSizer'].ClockSize.value;
         if (isPositiveInteger(finalSize)) {
-            if (finalSize > originalSize) {
-                for (let index = originalSize; index <= finalSize; index++) {
+            if (finalSize > myResClock.diameter) {
+                for (let index = myResClock.diameter; index <= finalSize; index++) {
                     await waitABit();
                     myResClock.setClockSize(index);
                 }
             } else {
-                for (let index = originalSize; index >= finalSize; index--) {
+                for (let index = myResClock.diameter; index >= finalSize; index--) {
                     await waitABit();
                     myResClock.setClockSize(index);
                 }
             }
-            originalSize = finalSize;
+            myResClock.diameter = finalSize;
         }
     };
 
-    const myResClock = new AnimClock(document.getElementById('ResizableClock'));
-
-	myResClock.setClockSize(originalSize);
+    const myResClock = new AnimClock(document.getElementById('ResizableClock'),160);
     myResClock.run();
 }
 
