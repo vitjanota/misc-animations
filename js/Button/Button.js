@@ -1,7 +1,10 @@
-Inits.push(initButton);
+// Button click action here
+let buttonClickAction = () => {
+    alert("Button clicked!");
+}
 
 // Button functionality initialization
-function initButton() {
+let initButton = () => {
     [...document.getElementsByClassName("Button")].forEach((Button) => {
         Button.onclick = (event) => {
             setTimeout(buttonClickAction,200);
@@ -9,7 +12,4 @@ function initButton() {
     });
 }
 
-// Button click action here
-function buttonClickAction() {
-    alert("Button clicked!");
-}
+Inits.push(initButton);
