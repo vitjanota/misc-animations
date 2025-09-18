@@ -1,65 +1,26 @@
-Inits.push(initClock);
-Inits.push(initResClock);
+
 
 let originalSize = 120;
 
-// Clock functionality initialization
-function initClock() {
-	let myClock = new AnimClock(document.getElementById('PureClock')),
-		myClockDial = new AnimClock(document.getElementById('DialImageClock')),
-		myClockHands = new AnimClock(document.getElementById('HandImageClock'));
-	const currentTime = new Date();
-	
-	myClock.positionHands();
-    myClockDial.positionHands();
-    myClockHands.positionHands();
+// Clock class
+class AnimClock {
+    constructor(dial) {
+        this.dial = dial;
+	    this.secondHandArea = dial.children[0];
+	    this.minuteHandArea = dial.children[1];
+	    this.hourHandArea = dial.children[2];
+	    this.secondHand = this.secondHandArea.children[0];
+	    this.minuteHand = this.minuteHandArea.children[0];
+	    this.hourHand = this.hourHandArea.children[0];
+    }
 
-    myClock.moveHands(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
-    myClockDial.moveHands(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
-    myClockHands.moveHands(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
-}
+    run() {
+        const currentTime = new Date();
+        this.positionHands();
+        this.moveHands(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
+    }
 
-async function initResClock() {
-    // set resize functionality for dynamic size clock
-    document.getElementById('ResizeClock').onclick = async function(event) {
-        event.preventDefault();
-        const finalSize = document.forms['ClockSizer'].ClockSize.value;
-        if (isPositiveInteger(finalSize)) {
-            if (finalSize > originalSize) {
-                for (let index = originalSize; index <= finalSize; index++) {
-                    await waitABit();
-                    myResClock.setClockSize(index);
-                }
-            } else {
-                for (let index = originalSize; index >= finalSize; index--) {
-                    await waitABit();
-                    myResClock.setClockSize(index);
-                }
-            }
-            originalSize = finalSize;
-        }
-    };
-
-    let myResClock = new AnimClock(document.getElementById('ResizableClock'));
-	const currentTime = new Date();
-
-	myResClock.setClockSize(originalSize);
-    myResClock.positionHands();
-    myResClock.moveHands(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
-}
-
-// Clock object definition
-function AnimClock(dial) {
-    // clock components references
-    this.dial = dial;
-	this.secondHandArea = dial.children[0];
-	this.minuteHandArea = dial.children[1];
-	this.hourHandArea = dial.children[2],
-	this.secondHand = this.secondHandArea.children[0],
-	this.minuteHand = this.minuteHandArea.children[0],
-	this.hourHand = this.hourHandArea.children[0],
-
-	this.setClockSize = function(diameter) {
+    setClockSize(diameter) {
 		//calcuate hands size (arbitrary numbers derived from dial diameter just to look nice)
 		let secondHandSize = { // 2% x 46% of dial size
                 height: Math.round(diameter * 0.46),
@@ -100,7 +61,7 @@ function AnimClock(dial) {
 		this.positionHands();
 	};
 
-	this.positionHands = function() {
+    positionHands() {
 		//read and store current clock size
 		const diameter = window.getComputedStyle(this.dial,null).getPropertyValue('height').replace('px',''),
 			secondHandSize = {
@@ -133,27 +94,27 @@ function AnimClock(dial) {
         this.hourHandArea.style.top = ((diameter / 2) - hourHandSize.height - (minuteHandSize.height * 2) - (secondHandSize.height * 2)) + 'px';
 	};
 
-	this.moveHands = function(hrs,mins,secs) {
-		let that = this;
+    moveHands(hrs,mins,secs) {
 	    const currentTime = new Date();
 		// move hands to appropriate position
 		this.hourHandArea.style.transform = `rotateZ(${((hrs * 30) + Math.round(30 * mins / 60))}deg)`;
 		this.minuteHandArea.style.transform = `rotateZ(${(mins * 6)}deg)`;
 		this.secondHandArea.style.transform = `rotateZ(${(secs * 6)}deg)`;
 		// redraw after one second
-		setTimeout(function(){
-			that.moveHands(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
+		setTimeout(() => {
+			this.moveHands(currentTime.getHours(), currentTime.getMinutes(), currentTime.getSeconds());
 		},1000);
 	};
 }
 
+
 // insert slight delay in actions
-function waitABit() {
+let waitABit = () => {
     return new Promise(resolve => setTimeout(resolve, 10));
 }
 
-// test if value is positive integer
-function isPositiveInteger(val) {
+// test if value is a positive integer
+let isPositiveInteger = (val) => {
     let test = false;
     if (val?.trim?.() && !isNaN(val)) {
         const num = parseFloat(val);
@@ -163,3 +124,44 @@ function isPositiveInteger(val) {
     }
     return test;
 }
+
+// Clock functionality initialization
+let initClock = () => {
+	const myClock = new AnimClock(document.getElementById('PureClock'));
+	const myClockDial = new AnimClock(document.getElementById('DialImageClock'));
+	const myClockHands = new AnimClock(document.getElementById('HandImageClock'));
+
+    myClock.run();
+    myClockDial.run();
+    myClockHands.run();
+}
+
+let  initResClock = async () => {
+    // set resize functionality for dynamic size clock
+    document.getElementById('ResizeClock').onclick = async (event) => {
+        event.preventDefault();
+        const finalSize = document.forms['ClockSizer'].ClockSize.value;
+        if (isPositiveInteger(finalSize)) {
+            if (finalSize > originalSize) {
+                for (let index = originalSize; index <= finalSize; index++) {
+                    await waitABit();
+                    myResClock.setClockSize(index);
+                }
+            } else {
+                for (let index = originalSize; index >= finalSize; index--) {
+                    await waitABit();
+                    myResClock.setClockSize(index);
+                }
+            }
+            originalSize = finalSize;
+        }
+    };
+
+    const myResClock = new AnimClock(document.getElementById('ResizableClock'));
+
+	myResClock.setClockSize(originalSize);
+    myResClock.run();
+}
+
+Inits.push(initClock);
+Inits.push(initResClock);
